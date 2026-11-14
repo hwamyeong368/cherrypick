@@ -289,6 +289,8 @@ import type {
 	ChatRoomsUpdateResponse,
 	ChatRoomsVoiceConnectionInfoRequest,
 	ChatRoomsVoiceConnectionInfoResponse,
+	ChatRoomsVoiceConvertRecordingRequest,
+	ChatRoomsVoiceConvertRecordingResponse,
 	ChatRoomsVoiceJoinRequest,
 	ChatRoomsVoiceJoinResponse,
 	ChatRoomsVoiceKickRequest,
@@ -313,6 +315,12 @@ import type {
 	ClipsUpdateRequest,
 	ClipsUpdateResponse,
 	DriveResponse,
+	DriveDeleteExecuteRequest,
+	DriveDeleteExecuteResponse,
+	DriveDeletePrepareRequest,
+	DriveDeletePrepareResponse,
+	DriveDeleteStatusRequest,
+	DriveDeleteStatusResponse,
 	DriveFilesRequest,
 	DriveFilesResponse,
 	DriveFilesAttachedChatMessagesRequest,
@@ -936,6 +944,7 @@ export type Endpoints = {
 	'chat/rooms/show': { req: ChatRoomsShowRequest; res: ChatRoomsShowResponse };
 	'chat/rooms/update': { req: ChatRoomsUpdateRequest; res: ChatRoomsUpdateResponse };
 	'chat/rooms/voice/connection-info': { req: ChatRoomsVoiceConnectionInfoRequest; res: ChatRoomsVoiceConnectionInfoResponse };
+	'chat/rooms/voice/convert-recording': { req: ChatRoomsVoiceConvertRecordingRequest; res: ChatRoomsVoiceConvertRecordingResponse };
 	'chat/rooms/voice/join': { req: ChatRoomsVoiceJoinRequest; res: ChatRoomsVoiceJoinResponse };
 	'chat/rooms/voice/kick': { req: ChatRoomsVoiceKickRequest; res: EmptyResponse };
 	'chat/rooms/voice/mute': { req: ChatRoomsVoiceMuteRequest; res: EmptyResponse };
@@ -953,6 +962,9 @@ export type Endpoints = {
 	'clips/unfavorite': { req: ClipsUnfavoriteRequest; res: EmptyResponse };
 	'clips/update': { req: ClipsUpdateRequest; res: ClipsUpdateResponse };
 	'drive': { req: EmptyRequest; res: DriveResponse };
+	'drive/delete/execute': { req: DriveDeleteExecuteRequest; res: DriveDeleteExecuteResponse };
+	'drive/delete/prepare': { req: DriveDeletePrepareRequest; res: DriveDeletePrepareResponse };
+	'drive/delete/status': { req: DriveDeleteStatusRequest; res: DriveDeleteStatusResponse };
 	'drive/files': { req: DriveFilesRequest; res: DriveFilesResponse };
 	'drive/files/attached-chat-messages': { req: DriveFilesAttachedChatMessagesRequest; res: DriveFilesAttachedChatMessagesResponse };
 	'drive/files/attached-notes': { req: DriveFilesAttachedNotesRequest; res: DriveFilesAttachedNotesResponse };

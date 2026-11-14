@@ -1025,7 +1025,7 @@ export class ApInboxService {
 			return object._misskey_content;
 		}
 		if (typeof object.content === 'string') {
-			return this.apMfmService.htmlToMfm(object.content, object.tag);
+			return this.apMfmService.htmlToMfm(object.content, { tag: object.tag });
 		}
 		return null;
 	}
@@ -1324,6 +1324,7 @@ export class ApInboxService {
 					uri,
 					emojis: apEmojis,
 					editedAt,
+					dice: object._misskey_dice,
 				});
 			} else {
 				// Group chat
@@ -1338,6 +1339,7 @@ export class ApInboxService {
 					uri,
 					emojis: apEmojis,
 					editedAt,
+					dice: object._misskey_dice,
 				});
 			}
 
@@ -2126,6 +2128,7 @@ export class ApInboxService {
 			name: typeof object.name === 'string' ? truncate(object.name, 256) : room.name,
 			description: typeof object.summary === 'string' ? truncate(object.summary, 2048) : room.description,
 			isArchived: typeof object._misskey_chatArchived === 'boolean' ? object._misskey_chatArchived : room.isArchived,
+			allowRecording: typeof object.allowRecording === 'boolean' ? object.allowRecording : room.allowRecording,
 		}, { federate: false, remoteUpdatedAt: this.chatRoomUpdatedAt(object) });
 	}
 
@@ -2301,6 +2304,7 @@ export class ApInboxService {
 					description: roomDescription,
 					ownerId: actor.id,
 					isArchived: roomObject._misskey_chatArchived === true,
+					allowRecording: roomObject.allowRecording === true,
 					uri: roomUri,
 					lastRemoteUpdatedAt: this.chatRoomUpdatedAt(roomObject) ?? null,
 				});

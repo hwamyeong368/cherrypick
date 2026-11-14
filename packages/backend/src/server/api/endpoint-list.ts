@@ -192,6 +192,9 @@ export * as 'drive/files/attached-chat-messages' from './endpoints/drive/files/a
 export * as 'drive/files/check-existence' from './endpoints/drive/files/check-existence.js';
 export * as 'drive/files/create' from './endpoints/drive/files/create.js';
 export * as 'drive/files/delete' from './endpoints/drive/files/delete.js';
+export * as 'drive/delete/prepare' from './endpoints/drive/delete/prepare.js';
+export * as 'drive/delete/execute' from './endpoints/drive/delete/execute.js';
+export * as 'drive/delete/status' from './endpoints/drive/delete/status.js';
 export * as 'drive/files/delete-bulk' from './endpoints/drive/files/delete-bulk.js';
 export * as 'drive/files/find' from './endpoints/drive/files/find.js';
 export * as 'drive/files/find-by-hash' from './endpoints/drive/files/find-by-hash.js';
@@ -485,6 +488,7 @@ export * as 'chat/rooms/voice/join' from './endpoints/chat/rooms/voice/join.js';
 export * as 'chat/rooms/voice/states' from './endpoints/chat/rooms/voice/states.js';
 export * as 'chat/rooms/voice/kick' from './endpoints/chat/rooms/voice/kick.js';
 export * as 'chat/rooms/voice/status' from './endpoints/chat/rooms/voice/status.js';
+export * as 'chat/rooms/voice/convert-recording' from './endpoints/chat/rooms/voice/convert-recording.js';
 export * as 'chat/rooms/voice/mute' from './endpoints/chat/rooms/voice/mute.js';
 export * as 'chat/rooms/invitations/create' from './endpoints/chat/rooms/invitations/create.js';
 export * as 'chat/rooms/invitations/cancel' from './endpoints/chat/rooms/invitations/cancel.js';

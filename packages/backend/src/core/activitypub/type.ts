@@ -14,6 +14,7 @@ export interface IObject {
 	summary?: string;
 	_misskey_summary?: string;
 	_misskey_chatArchived?: boolean;
+	allowRecording?: boolean;
 	_misskey_chatRoom?: string;
 	_misskey_chatRoomMembers?: string[];
 	_misskey_chatRoomRosterAt?: string;
@@ -139,6 +140,7 @@ export interface IPost extends IObject {
 	_misskey_quote?: string;
 	_misskey_content?: string;
 	_misskey_talk?: boolean;
+	_misskey_dice?: unknown;
 	quoteUrl?: string;
 	disableRightClick?: boolean;
 	deleteAt?: string;
@@ -363,7 +365,7 @@ export interface IChatRoomVoiceState extends IObject {
 	type: 'ChatRoomVoiceState';
 	id: string;
 	room: string;
-	participants: { id: string; screenSharing: boolean; micMuted?: boolean; deafened?: boolean }[];
+	participants: { id: string; screenSharing: boolean; micMuted?: boolean; deafened?: boolean; recording?: boolean }[];
 	updated: string;
 }
 
