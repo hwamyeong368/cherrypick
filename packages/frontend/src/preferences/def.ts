@@ -356,6 +356,9 @@ export const PREF_DEF = definePreferences({
 			code: false,
 		} as DataSaverStore,
 	},
+	autoplayEmbededPlayerOfUrlPreview: {
+		default: true,
+	},
 	hemisphere: {
 		default: hemisphere as 'N' | 'S',
 	},
@@ -577,11 +580,6 @@ export const PREF_DEF = definePreferences({
 	},
 	'voiceCall.screenShareAudio': {
 		default: true,
-	},
-	// IP アドレスを見せることへの同意なので、アカウントごとに持つ
-	'voiceCall.acknowledgedRemoteHosts': {
-		accountDependent: true,
-		default: [] as string[],
 	},
 	// 広いルーム画面で通話とチャットを横に並べるとき、チャットを置く側
 	'voiceCall.stageChatSide': {

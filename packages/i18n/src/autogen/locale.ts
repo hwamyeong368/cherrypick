@@ -988,6 +988,10 @@ export interface Locale extends ILocale {
      */
     "download": string;
     /**
+     * ドラッグして順序を変更
+     */
+    "dragToReorder": string;
+    /**
      * ファイル「{name}」を削除しますか？このファイルを使用した一部のコンテンツも削除されます。
      */
     "driveFileDeleteConfirm": ParameterizedString<"name">;
@@ -6763,6 +6767,120 @@ export interface Locale extends ILocale {
         "oldest": string;
     };
     "_chat": {
+        "_channels": {
+            /**
+             * チャンネル
+             */
+            "channels": string;
+            /**
+             * チャンネル形式に切り替える
+             */
+            "convert": string;
+            /**
+             * これまでの会話はすべて #general チャンネルに移動します。
+             */
+            "convertHistory": string;
+            /**
+             * 切り替え後は単一の会話に戻せません。
+             */
+            "convertPermanent": string;
+            /**
+             * チャンネルの管理
+             */
+            "manage": string;
+            /**
+             * チャンネルを作成
+             */
+            "create": string;
+            /**
+             * チャンネル名
+             */
+            "name": string;
+            /**
+             * チャンネル名は前後の空白を除いて1〜128文字で入力してください。
+             */
+            "nameLimit": string;
+            /**
+             * チャンネルは128個まで作成できます。
+             */
+            "limit": string;
+            /**
+             * #{name} チャンネルとすべてのメッセージを完全に削除しますか？添付ファイルの原本はドライブに残ります。
+             */
+            "deleteConfirm": ParameterizedString<"name">;
+            /**
+             * このチャンネルを削除すると、旧バージョンのサーバーやアプリとは会話できなくなります。
+             */
+            "legacyDeleteWarning": string;
+            /**
+             * 最後のチャンネルは削除できません。
+             */
+            "lastChannel": string;
+            /**
+             * 削除されたチャンネル
+             */
+            "deleted": string;
+            /**
+             * チャンネルが削除されたため、残っている先頭のチャンネルに移動します。
+             */
+            "deletedNotice": string;
+            /**
+             * すべてのチャンネル
+             */
+            "all": string;
+            /**
+             * 上へ移動
+             */
+            "moveUp": string;
+            /**
+             * 下へ移動
+             */
+            "moveDown": string;
+            /**
+             * チャンネル一覧
+             */
+            "openList": string;
+        };
+        /**
+         * すべて受け取る
+         */
+        "notificationAll": string;
+        /**
+         * メンションのみ
+         */
+        "notificationMentions": string;
+        /**
+         * 通知しない
+         */
+        "notificationNone": string;
+        /**
+         * グループの設定に従う
+         */
+        "notificationInherit": string;
+        /**
+         * グループ全体を既読にする
+         */
+        "readAllRoom": string;
+        /**
+         * 合計
+         */
+        "diceTotal": string;
+        /**
+         * ロールの内訳
+         */
+        "diceDetails": string;
+        /**
+         * ダイスの式を読み取れませんでした。記法を確認して修正してください。
+         */
+        "diceInvalid": string;
+        /**
+         * ロールが計算の上限を超えました。ダイスの数や繰り返しを減らしてください。
+         */
+        "diceLimit": string;
+        /**
+         * 今はダイスを振れません。少し待ってからもう一度送信してください。
+         */
+        "diceBusy": string;
         /**
          * メッセージ
          */
@@ -6987,6 +7105,14 @@ export interface Locale extends ILocale {
          */
         "deletedMessage": string;
         /**
+         * 不明なユーザー
+         */
+        "unknownUser": string;
+        /**
+         * これ以上取得できません
+         */
+        "cannotFetchMoreHistory": string;
+        /**
          * グループが削除されました
          */
         "roomDeleted": string;
@@ -6995,7 +7121,7 @@ export interface Locale extends ILocale {
          */
         "kickMember": string;
         /**
-         * {name}さんを「{room}」から外しますか？このグループのメッセージは見られなくなり、戻るには再度招待が必要です。
+         * {name}さんを「{room}」から外しますか？このグループのメッセージは見られなくなり、再参加を許可するまで戻れません。
          */
         "kickMemberConfirm": ParameterizedString<"name" | "room">;
         /**
@@ -7079,11 +7205,35 @@ export interface Locale extends ILocale {
          */
         "memberAlreadyGone": string;
         /**
+         * 外したユーザー
+         */
+        "bannedUsers": string;
+        /**
+         * 再参加を許可
+         */
+        "pardon": string;
+        /**
+         * {name}さんの再参加を許可しますか？再び招待したり、参加したりできるようになります。
+         */
+        "pardonConfirm": ParameterizedString<"name">;
+        /**
+         * グループのオーナーに外されたため、このグループには再参加できません。
+         */
+        "bannedFromRoom": string;
+        /**
+         * このグループから外したユーザーです。再参加を許可すると招待できます。
+         */
+        "cannotInviteBannedUser": string;
+        /**
+         * このユーザーはすでに再参加が許可されています。
+         */
+        "banAlreadyLifted": string;
+        /**
          * メッセージを編集中
          */
         "editingMessage": string;
         /**
-         * このグループから退出しました。再参加するには招待が必要です。
+         * このグループには参加していません。
          */
         "removedFromRoom": string;
         /**
@@ -7098,6 +7248,100 @@ export interface Locale extends ILocale {
          * {x}さんへの招待をキャンセル
          */
         "cancelInvitationTo": ParameterizedString<"x">;
+        "_inviteLink": {
+            /**
+             * 招待リンク
+             */
+            "title": string;
+            /**
+             * グループへの招待
+             */
+            "pageTitle": string;
+            /**
+             * リンクを知っている人は誰でも、承認なしでこのグループに参加できます。無効化するまで使い続けられます。
+             */
+            "description": string;
+            /**
+             * 発行した招待リンクはありません。
+             */
+            "none": string;
+            /**
+             * 招待リンクを発行
+             */
+            "create": string;
+            /**
+             * 招待リンクを無効化
+             */
+            "revoke": string;
+            /**
+             * 招待リンクを無効化しますか？このリンクからは参加できなくなります。
+             */
+            "revokeConfirm": string;
+            /**
+             * アーカイブされたグループは、アーカイブを解除すると招待リンクを発行・無効化できます。
+             */
+            "archivedNote": string;
+            /**
+             * 招待リンクはすでにあります。新しいリンクが必要な場合は、先に今のリンクを無効化してください。
+             */
+            "alreadyExists": string;
+            /**
+             * この招待リンクはすでに無効化されています。
+             */
+            "alreadyRevoked": string;
+            /**
+             * メンバー{n}人
+             */
+            "membersCount": ParameterizedString<"n">;
+            /**
+             * グループを開く
+             */
+            "openRoom": string;
+            /**
+             * 参加をリクエストしました。グループがあるサーバーの応答を待っています。
+             */
+            "pending": string;
+            /**
+             * 参加リクエスト中
+             */
+            "pendingButton": string;
+            /**
+             * このグループに招待されています。グループを開いて招待を承認してください。
+             */
+            "invited": string;
+            /**
+             * 招待リンクが見つかりません。無効化されたか、グループが削除された可能性があります。
+             */
+            "notFound": string;
+            /**
+             * 正しい招待リンクではありません。
+             */
+            "invalidLink": string;
+            /**
+             * 招待リンクが無効化されたか、グループが削除されたため参加できません。
+             */
+            "refusedRevoked": string;
+            /**
+             * アーカイブされたグループのため参加できません。
+             */
+            "refusedArchived": string;
+            /**
+             * グループオーナーにグループから外されたアカウントのため、このグループには再参加できません。
+             */
+            "refusedBanned": string;
+            /**
+             * グループオーナーがこのアカウントをブロックしているため参加できません。
+             */
+            "refusedBlocked": string;
+            /**
+             * グループがあるサーバーが参加を拒否しました。
+             */
+            "refusedUnknown": string;
+            /**
+             * このサーバーからはこのグループに参加できません。リンクを開いて、グループがあるサーバーで確認してください。
+             */
+            "remoteJoinUnavailable": string;
+        };
     };
     "_emojiPalette": {
         /**
@@ -7286,6 +7530,10 @@ export interface Locale extends ILocale {
          * 環境によっては有効化できない場合があります。
          */
         "settingsPersistence_description2": string;
+        /**
+         * URLプレビューの埋め込みプレイヤーを自動再生
+         */
+        "autoplayEmbededPlayerOfUrlPreview": string;
         "_chat": {
             /**
              * 送信者の名前を表示
@@ -8431,10 +8679,6 @@ export interface Locale extends ILocale {
          */
         "enableRemoteVoiceCall": string;
         /**
-         * 参加者のIPアドレスは通話をホストするサーバーに見えます。
-         */
-        "enableRemoteVoiceCallDescription": string;
-        /**
          * Cloudflare TURN
          */
         "voiceCallCloudflareTurn": string;
@@ -9477,10 +9721,6 @@ export interface Locale extends ILocale {
          */
         "connectionFailed": string;
         /**
-         * この通話は{host}で開かれます。{host}にはあなたのIPアドレスが見えます。
-         */
-        "remoteHostNotice": ParameterizedString<"host">;
-        /**
          * このグループのサーバーは通話に対応していません。
          */
         "remoteHostUnsupported": string;
@@ -9670,6 +9910,114 @@ export interface Locale extends ILocale {
          * チャットを右に移動
          */
         "moveChatRight": string;
+        /**
+         * 録画ファイルをドライブに保存しました
+         */
+        "recordingSaved": string;
+        /**
+         * 通話録画
+         */
+        "recordingFolderName": string;
+        /**
+         * 録画ファイルをドライブの「{folder}」フォルダーに保存しました
+         */
+        "recordingSavedToFolder": ParameterizedString<"folder">;
+        /**
+         * 録画ファイルをこの端末に保存できませんでした
+         */
+        "recordingDownloadFailed": string;
+        /**
+         * 録画を開始
+         */
+        "startRecording": string;
+        /**
+         * 録画を停止
+         */
+        "stopRecording": string;
+        /**
+         * 録画中
+         */
+        "recording": string;
+        /**
+         * この通話は録画されています
+         */
+        "recordingInProgress": string;
+        /**
+         * この通話は録画されています。参加すると、あなたの声や共有した画面も録画に残ります。参加しますか？
+         */
+        "recordingJoinNotice": string;
+        /**
+         * {name}さんが録画を開始しました
+         */
+        "recordingStartedBy": ParameterizedString<"name">;
+        /**
+         * 録画が終了しました
+         */
+        "recordingStopped": string;
+        /**
+         * {stopped}さんの録画が終了し、{started}さんが録画を開始しました
+         */
+        "recordingStoppedAndStarted": ParameterizedString<"stopped" | "started">;
+        /**
+         * 録画ファイルを {n} 個ドライブに保存できませんでした。どうしますか？
+         */
+        "recordingSaveFailed": ParameterizedString<"n">;
+        /**
+         * 録画ファイルを {n} 個変換できませんでした。どうしますか？
+         */
+        "recordingConversionFailed": ParameterizedString<"n">;
+        /**
+         * 録画の一部を保存できませんでした。どうしますか？
+         */
+        "recordingMixedFailure": string;
+        /**
+         * 変換後のファイルがファイルサイズの上限を超えています。
+         */
+        "recordingConversionTooLarge": string;
+        /**
+         * 変換後のファイルを保存するドライブの空き容量がありません。
+         */
+        "recordingConversionNoFreeSpace": string;
+        /**
+         * この端末に保存
+         */
+        "recordingSaveToDevice": string;
+        /**
+         * 破棄
+         */
+        "recordingDiscard": string;
+        /**
+         * 保存できなかった録画を破棄しますか？元に戻せません。
+         */
+        "recordingDiscardConfirm": string;
+        /**
+         * 保存できなかった録画を破棄しますか？ドライブにアップロード済みの元のファイルも削除されます。元に戻せません。
+         */
+        "recordingDiscardConfirmUploaded": string;
+        /**
+         * 元のファイルを {n} 個削除できませんでした。もう一度破棄してください。
+         */
+        "recordingDiscardDeleteFailed": ParameterizedString<"n">;
+        /**
+         * 録画 {n} 件を破棄できませんでした。もう一度破棄してください。
+         */
+        "recordingDiscardFailed": ParameterizedString<"n">;
+        /**
+         * サーバーが録画を受け付けなかったため、録画を開始できませんでした
+         */
+        "recordingStartRejected": string;
+        /**
+         * サーバーが録画を受け付けなかったため、録画を停止しました
+         */
+        "recordingRejected": string;
+        /**
+         * 通話の録画を許可
+         */
+        "allowRecording": string;
+        /**
+         * オンにすると、参加者が通話 (声と共有画面) を録画できます。録画が始まると全員に知らされます。
+         */
+        "allowRecordingDescription": string;
     };
     "_role": {
         /**
@@ -16073,6 +16421,14 @@ export interface Locale extends ILocale {
          */
         "capacityTitle": string;
         /**
+         * 録画の同時変換数
+         */
+        "recordingConversionsTitle": string;
+        /**
+         * 通話の録画を同時にいくつまで変換するかです。
+         */
+        "recordingConversionsDescription": string;
+        /**
          * ルームの所有者を含む人数です。変更は新しい通話から適用され、進行中の通話の定員は変わりません。レンタルしたインフラを使う通話では、通話ごとにこの人数分の枠を提供元の容量から予約します。
          */
         "capacityDescription": string;
@@ -16177,10 +16533,6 @@ export interface Locale extends ILocale {
          */
         "capacity": ParameterizedString<"reserved" | "max" | "remaining">;
         /**
-         * 通話メディアは{host}が提供します。このサーバーにIPアドレスと通話参加情報が伝わります。接続しますか？
-         */
-        "mediaNotice": ParameterizedString<"host">;
-        /**
          * メディア提供サーバー: {host}
          */
         "mediaProvider": ParameterizedString<"host">;
@@ -16196,5 +16548,91 @@ export interface Locale extends ILocale {
          * 通話の貸し出し承認または認証情報が無効です。管理者に連絡してください。
          */
         "revoked": string;
+    };
+    "_driveDeletion": {
+        /**
+         * 選択したファイル: {count}個
+         */
+        "selectedCount": ParameterizedString<"count">;
+        /**
+         * 選択した{count}個のファイルを削除しますか？削除すると元に戻せません。
+         */
+        "filesConfirm": ParameterizedString<"count">;
+        /**
+         * フォルダー「{name}」とすべてのサブフォルダー（ファイル合計{count}個）を削除しますか？削除すると元に戻せません。
+         */
+        "folderConfirm": ParameterizedString<"name" | "count">;
+        /**
+         * 投稿・添付・アイコン・バナーなどで使用中のファイルも削除され、表示できなくなる場合があります。
+         */
+        "scope": string;
+        /**
+         * 削除したファイル: {count}個。
+         */
+        "deletedFiles": ParameterizedString<"count">;
+        /**
+         * 削除したフォルダー: {count}個。
+         */
+        "deletedFolders": ParameterizedString<"count">;
+        /**
+         * 既に存在しないかアクセスできないファイル: {count}個。
+         */
+        "missingFiles": ParameterizedString<"count">;
+        /**
+         * 既に存在しないかアクセスできないフォルダー: {count}個。
+         */
+        "missingFolders": ParameterizedString<"count">;
+        /**
+         * 削除に失敗したファイル: {count}個。
+         */
+        "failedFiles": ParameterizedString<"count">;
+        /**
+         * 残ったファイル: {count}個。
+         */
+        "remainingFiles": ParameterizedString<"count">;
+        /**
+         * 残ったフォルダー: {count}個。
+         */
+        "remainingFolders": ParameterizedString<"count">;
+        /**
+         * 削除した項目はありません。
+         */
+        "noItemsDeleted": string;
+        /**
+         * 残った項目を確認して、もう一度削除してください。
+         */
+        "retry": string;
+        /**
+         * 削除が中断されました。残ったファイルとフォルダーを確認してください。
+         */
+        "interrupted": string;
+        /**
+         * 一度に削除できるのはファイル10,000個、フォルダー1,000個までです。分けて削除してください。
+         */
+        "tooMany": string;
+        /**
+         * 削除の確認の有効期限が切れました。再試行してください。
+         */
+        "expired": string;
+        /**
+         * 別の削除を実行中です。しばらくお待ちください。
+         */
+        "busy": string;
+        /**
+         * 削除するフォルダーが見つかりません。リストを再読み込みしてください。
+         */
+        "folderUnavailable": string;
+        /**
+         * 選択が正しくありません。削除するファイルかフォルダーを選び直してください。
+         */
+        "invalidSelection": string;
+        /**
+         * 削除を開始できませんでした。もう一度お試しください。
+         */
+        "prepareFailed": string;
+        /**
+         * 移動したファイル: {moved}個。失敗: {failed}個。失敗したファイルをもう一度移動してください。
+         */
+        "moveResult": ParameterizedString<"moved" | "failed">;
     };
 }

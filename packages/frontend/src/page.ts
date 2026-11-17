@@ -15,8 +15,10 @@ export type PageMetadata = {
 	subtitle?: string;
 	icon?: string | null;
 	avatar?: Misskey.entities.User | null;
+	roomAvatar?: Misskey.entities.ChatRoom | null;
 	userName?: Misskey.entities.User | null;
 	needWideArea?: boolean;
+	mobileFooterInFlow?: boolean;
 };
 
 type PageMetadataGetter = () => PageMetadata;

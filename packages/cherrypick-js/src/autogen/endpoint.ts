@@ -244,6 +244,12 @@ import type {
 	ChartsUsersResponse,
 	ChatHistoryRequest,
 	ChatHistoryResponse,
+	ChatInviteLinkJoinRequest,
+	ChatInviteLinkJoinResponse,
+	ChatInviteLinkJoinStatusRequest,
+	ChatInviteLinkJoinStatusResponse,
+	ChatInviteLinkShowRequest,
+	ChatInviteLinkShowResponse,
 	ChatMessagesCreateToRoomRequest,
 	ChatMessagesCreateToRoomResponse,
 	ChatMessagesCreateToUserRequest,
@@ -261,6 +267,20 @@ import type {
 	ChatMessagesUpdateResponse,
 	ChatMessagesUserTimelineRequest,
 	ChatMessagesUserTimelineResponse,
+	ChatRoomsBansDeleteRequest,
+	ChatRoomsBansListRequest,
+	ChatRoomsBansListResponse,
+	ChatRoomsChannelsCreateRequest,
+	ChatRoomsChannelsCreateResponse,
+	ChatRoomsChannelsDeleteRequest,
+	ChatRoomsChannelsListRequest,
+	ChatRoomsChannelsListResponse,
+	ChatRoomsChannelsReorderRequest,
+	ChatRoomsChannelsReorderResponse,
+	ChatRoomsChannelsUpdateRequest,
+	ChatRoomsChannelsUpdateResponse,
+	ChatRoomsConvertToChannelsRequest,
+	ChatRoomsConvertToChannelsResponse,
 	ChatRoomsCreateRequest,
 	ChatRoomsCreateResponse,
 	ChatRoomsDeleteRequest,
@@ -273,6 +293,11 @@ import type {
 	ChatRoomsInvitationsOutboxRequest,
 	ChatRoomsInvitationsOutboxResponse,
 	ChatRoomsInvitationsRejectRequest,
+	ChatRoomsInviteLinkCreateRequest,
+	ChatRoomsInviteLinkCreateResponse,
+	ChatRoomsInviteLinkRevokeRequest,
+	ChatRoomsInviteLinkShowRequest,
+	ChatRoomsInviteLinkShowResponse,
 	ChatRoomsJoinRequest,
 	ChatRoomsJoiningRequest,
 	ChatRoomsJoiningResponse,
@@ -281,18 +306,32 @@ import type {
 	ChatRoomsMembersRequest,
 	ChatRoomsMembersResponse,
 	ChatRoomsMuteRequest,
+	ChatRoomsNotificationsRequest,
+	ChatRoomsNotificationsResponse,
 	ChatRoomsOwnedRequest,
 	ChatRoomsOwnedResponse,
+	ChatRoomsReadRequest,
 	ChatRoomsShowRequest,
 	ChatRoomsShowResponse,
+	ChatRoomsUnreadRequest,
+	ChatRoomsUnreadResponse,
 	ChatRoomsUpdateRequest,
 	ChatRoomsUpdateResponse,
 	ChatRoomsVoiceConnectionInfoRequest,
 	ChatRoomsVoiceConnectionInfoResponse,
+	ChatRoomsVoiceConvertRecordingRequest,
+	ChatRoomsVoiceConvertRecordingResponse,
 	ChatRoomsVoiceJoinRequest,
 	ChatRoomsVoiceJoinResponse,
 	ChatRoomsVoiceKickRequest,
 	ChatRoomsVoiceMuteRequest,
+	ChatRoomsVoiceRecordingDiscardRequest,
+	ChatRoomsVoiceRecordingFolderRequest,
+	ChatRoomsVoiceRecordingFolderResponse,
+	ChatRoomsVoiceRecordingPartRequest,
+	ChatRoomsVoiceRecordingPartResponse,
+	ChatRoomsVoiceRecordingResultRequest,
+	ChatRoomsVoiceRecordingResultResponse,
 	ChatRoomsVoiceStatesRequest,
 	ChatRoomsVoiceStatesResponse,
 	ChatRoomsVoiceStatusRequest,
@@ -313,6 +352,12 @@ import type {
 	ClipsUpdateRequest,
 	ClipsUpdateResponse,
 	DriveResponse,
+	DriveDeleteExecuteRequest,
+	DriveDeleteExecuteResponse,
+	DriveDeletePrepareRequest,
+	DriveDeletePrepareResponse,
+	DriveDeleteStatusRequest,
+	DriveDeleteStatusResponse,
 	DriveFilesRequest,
 	DriveFilesResponse,
 	DriveFilesAttachedChatMessagesRequest,
@@ -907,6 +952,9 @@ export type Endpoints = {
 	'charts/user/reactions': { req: ChartsUserReactionsRequest; res: ChartsUserReactionsResponse };
 	'charts/users': { req: ChartsUsersRequest; res: ChartsUsersResponse };
 	'chat/history': { req: ChatHistoryRequest; res: ChatHistoryResponse };
+	'chat/invite-link/join': { req: ChatInviteLinkJoinRequest; res: ChatInviteLinkJoinResponse };
+	'chat/invite-link/join-status': { req: ChatInviteLinkJoinStatusRequest; res: ChatInviteLinkJoinStatusResponse };
+	'chat/invite-link/show': { req: ChatInviteLinkShowRequest; res: ChatInviteLinkShowResponse };
 	'chat/messages/create-to-room': { req: ChatMessagesCreateToRoomRequest; res: ChatMessagesCreateToRoomResponse };
 	'chat/messages/create-to-user': { req: ChatMessagesCreateToUserRequest; res: ChatMessagesCreateToUserResponse };
 	'chat/messages/delete': { req: ChatMessagesDeleteRequest; res: EmptyResponse };
@@ -918,6 +966,14 @@ export type Endpoints = {
 	'chat/messages/update': { req: ChatMessagesUpdateRequest; res: ChatMessagesUpdateResponse };
 	'chat/messages/user-timeline': { req: ChatMessagesUserTimelineRequest; res: ChatMessagesUserTimelineResponse };
 	'chat/read-all': { req: EmptyRequest; res: EmptyResponse };
+	'chat/rooms/bans/delete': { req: ChatRoomsBansDeleteRequest; res: EmptyResponse };
+	'chat/rooms/bans/list': { req: ChatRoomsBansListRequest; res: ChatRoomsBansListResponse };
+	'chat/rooms/channels/create': { req: ChatRoomsChannelsCreateRequest; res: ChatRoomsChannelsCreateResponse };
+	'chat/rooms/channels/delete': { req: ChatRoomsChannelsDeleteRequest; res: EmptyResponse };
+	'chat/rooms/channels/list': { req: ChatRoomsChannelsListRequest; res: ChatRoomsChannelsListResponse };
+	'chat/rooms/channels/reorder': { req: ChatRoomsChannelsReorderRequest; res: ChatRoomsChannelsReorderResponse };
+	'chat/rooms/channels/update': { req: ChatRoomsChannelsUpdateRequest; res: ChatRoomsChannelsUpdateResponse };
+	'chat/rooms/convert-to-channels': { req: ChatRoomsConvertToChannelsRequest; res: ChatRoomsConvertToChannelsResponse };
 	'chat/rooms/create': { req: ChatRoomsCreateRequest; res: ChatRoomsCreateResponse };
 	'chat/rooms/delete': { req: ChatRoomsDeleteRequest; res: EmptyResponse };
 	'chat/rooms/invitations/cancel': { req: ChatRoomsInvitationsCancelRequest; res: EmptyResponse };
@@ -926,19 +982,30 @@ export type Endpoints = {
 	'chat/rooms/invitations/inbox': { req: ChatRoomsInvitationsInboxRequest; res: ChatRoomsInvitationsInboxResponse };
 	'chat/rooms/invitations/outbox': { req: ChatRoomsInvitationsOutboxRequest; res: ChatRoomsInvitationsOutboxResponse };
 	'chat/rooms/invitations/reject': { req: ChatRoomsInvitationsRejectRequest; res: EmptyResponse };
+	'chat/rooms/invite-link/create': { req: ChatRoomsInviteLinkCreateRequest; res: ChatRoomsInviteLinkCreateResponse };
+	'chat/rooms/invite-link/revoke': { req: ChatRoomsInviteLinkRevokeRequest; res: EmptyResponse };
+	'chat/rooms/invite-link/show': { req: ChatRoomsInviteLinkShowRequest; res: ChatRoomsInviteLinkShowResponse };
 	'chat/rooms/join': { req: ChatRoomsJoinRequest; res: EmptyResponse };
 	'chat/rooms/joining': { req: ChatRoomsJoiningRequest; res: ChatRoomsJoiningResponse };
 	'chat/rooms/kick': { req: ChatRoomsKickRequest; res: EmptyResponse };
 	'chat/rooms/leave': { req: ChatRoomsLeaveRequest; res: EmptyResponse };
 	'chat/rooms/members': { req: ChatRoomsMembersRequest; res: ChatRoomsMembersResponse };
 	'chat/rooms/mute': { req: ChatRoomsMuteRequest; res: EmptyResponse };
+	'chat/rooms/notifications': { req: ChatRoomsNotificationsRequest; res: ChatRoomsNotificationsResponse };
 	'chat/rooms/owned': { req: ChatRoomsOwnedRequest; res: ChatRoomsOwnedResponse };
+	'chat/rooms/read': { req: ChatRoomsReadRequest; res: EmptyResponse };
 	'chat/rooms/show': { req: ChatRoomsShowRequest; res: ChatRoomsShowResponse };
+	'chat/rooms/unread': { req: ChatRoomsUnreadRequest; res: ChatRoomsUnreadResponse };
 	'chat/rooms/update': { req: ChatRoomsUpdateRequest; res: ChatRoomsUpdateResponse };
 	'chat/rooms/voice/connection-info': { req: ChatRoomsVoiceConnectionInfoRequest; res: ChatRoomsVoiceConnectionInfoResponse };
+	'chat/rooms/voice/convert-recording': { req: ChatRoomsVoiceConvertRecordingRequest; res: ChatRoomsVoiceConvertRecordingResponse };
 	'chat/rooms/voice/join': { req: ChatRoomsVoiceJoinRequest; res: ChatRoomsVoiceJoinResponse };
 	'chat/rooms/voice/kick': { req: ChatRoomsVoiceKickRequest; res: EmptyResponse };
 	'chat/rooms/voice/mute': { req: ChatRoomsVoiceMuteRequest; res: EmptyResponse };
+	'chat/rooms/voice/recording-discard': { req: ChatRoomsVoiceRecordingDiscardRequest; res: EmptyResponse };
+	'chat/rooms/voice/recording-folder': { req: ChatRoomsVoiceRecordingFolderRequest; res: ChatRoomsVoiceRecordingFolderResponse };
+	'chat/rooms/voice/recording-part': { req: ChatRoomsVoiceRecordingPartRequest; res: ChatRoomsVoiceRecordingPartResponse };
+	'chat/rooms/voice/recording-result': { req: ChatRoomsVoiceRecordingResultRequest; res: ChatRoomsVoiceRecordingResultResponse };
 	'chat/rooms/voice/states': { req: ChatRoomsVoiceStatesRequest; res: ChatRoomsVoiceStatesResponse };
 	'chat/rooms/voice/status': { req: ChatRoomsVoiceStatusRequest; res: EmptyResponse };
 	'clips/add-note': { req: ClipsAddNoteRequest; res: EmptyResponse };
@@ -953,6 +1020,9 @@ export type Endpoints = {
 	'clips/unfavorite': { req: ClipsUnfavoriteRequest; res: EmptyResponse };
 	'clips/update': { req: ClipsUpdateRequest; res: ClipsUpdateResponse };
 	'drive': { req: EmptyRequest; res: DriveResponse };
+	'drive/delete/execute': { req: DriveDeleteExecuteRequest; res: DriveDeleteExecuteResponse };
+	'drive/delete/prepare': { req: DriveDeletePrepareRequest; res: DriveDeletePrepareResponse };
+	'drive/delete/status': { req: DriveDeleteStatusRequest; res: DriveDeleteStatusResponse };
 	'drive/files': { req: DriveFilesRequest; res: DriveFilesResponse };
 	'drive/files/attached-chat-messages': { req: DriveFilesAttachedChatMessagesRequest; res: DriveFilesAttachedChatMessagesResponse };
 	'drive/files/attached-notes': { req: DriveFilesAttachedNotesRequest; res: DriveFilesAttachedNotesResponse };
@@ -1237,5 +1307,6 @@ export type Endpoints = {
  * NOTE: The content-type for all endpoints not listed here is application/json.
  */
 export const endpointReqTypes = {
+	'chat/rooms/voice/recording-part': 'multipart/form-data',
 	'drive/files/create': 'multipart/form-data',
 } as const satisfies { [K in keyof Endpoints]?: 'multipart/form-data'; };

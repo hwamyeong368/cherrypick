@@ -4,7 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div ref="rootEl" :class="[$style.root, { [$style.reduceBlurEffect]: !prefer.s.useBlurEffect, [$style.reduceAnimation]: !prefer.s.animation, [$style.showEl]: (showEl && ['hideFloatBtnNavBar', 'hide'].includes(<string>prefer.s.displayHeaderNavBarWhenScroll)), [$style.scrollToTransparent]: showEl, [$style.atBottom]: isAtBottom }]">
+<div ref="rootEl" :class="[$style.root, { [$style.reduceBlurEffect]: !prefer.s.useBlurEffect, [$style.reduceAnimation]: !prefer.s.animation, [$style.showEl]: (showEl && ['hideFloatBtnNavBar', 'hide'].includes(<string>prefer.s.displayHeaderNavBarWhenScroll)), [$style.scrollToTransparent]: showEl, [$style.atBottom]: forceInFlow || isAtBottom }]">
 	<button v-if="store.s.showHomeButtonInNavbar" :class="$style.item" class="_button" @click="clickHomeButton" @touchstart="openAccountMenu" @touchend="closeAccountMenu">
 		<div :class="[$style.itemInner, { [$style.active]: mainRouter.currentRoute.value.name === 'index' }]">
 			<i :class="$style.itemIcon" class="ti ti-home"></i>
@@ -39,7 +39,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<button v-if="store.s.showChatButtonInNavbar && $i != null && $i.policies.chatAvailability !== 'unavailable'" :class="$style.item" class="_button" @click="clickChatButton">
 		<div :class="[$style.itemInner, { [$style.active]: ['chat', 'chat-room'].includes(<string>mainRouter.currentRoute.value.name) }]">
 			<i :class="$style.itemIcon" class="ti ti-messages"></i>
-			<span v-if="$i?.hasUnreadChatMessages" :class="$style.itemIndicator" class="_blink">
+			<span v-if="$i?.hasUnreadChatMessages" :class="[$style.itemIndicator, { _blink: $i?.hasUnreadChatNotifications ?? true }]">
 				<i class="_indicatorCircle"></i>
 			</span>
 		</div>
@@ -65,6 +65,12 @@ import { getAccountMenu } from '@/accounts.js';
 import { scrollToVisibility } from '@/utility/scroll-to-visibility.js';
 import { haptic } from '@/utility/haptic.js';
 import * as os from '@/os.js';
+
+withDefaults(defineProps<{
+	forceInFlow?: boolean;
+}>(), {
+	forceInFlow: false,
+});
 
 const { showEl } = scrollToVisibility();
 const queuedAheadItemsCount = ref(0);
@@ -165,7 +171,7 @@ onUnmounted(() => {
 	position: fixed;
 	z-index: 1;
 	bottom: 0;
-	padding: 0 10px env(safe-area-inset-bottom, 0px);
+	padding: 0 10px var(--MI-mobileFooterSafeAreaBottom, env(safe-area-inset-bottom, 0px));
 	display: flex;
 	width: 100%;
 	box-sizing: border-box;

@@ -29,6 +29,7 @@ import { DeleteAccountService } from './DeleteAccountService.js';
 import { TruncateAccountService } from './TruncateAccountService.js';
 import { DownloadService } from './DownloadService.js';
 import { DriveService } from './DriveService.js';
+import { DriveDeletionService } from './DriveDeletionService.js';
 import { DriveFileUsageService } from './DriveFileUsageService.js';
 import { EmailService } from './EmailService.js';
 import { FederatedInstanceService } from './FederatedInstanceService.js';
@@ -78,8 +79,14 @@ import { ClipService } from './ClipService.js';
 import { FeaturedService } from './FeaturedService.js';
 import { FanoutTimelineService } from './FanoutTimelineService.js';
 import { ChannelFollowingService } from './ChannelFollowingService.js';
+import { ChatDiceService } from './ChatDiceService.js';
 import { ChatService } from './ChatService.js';
+import { ChatRoomChannelService } from './ChatRoomChannelService.js';
+import { ChatInviteLinkService } from './ChatInviteLinkService.js';
+import { ChatRoomNotificationService } from './ChatRoomNotificationService.js';
+import { ChatRoomBanService } from './ChatRoomBanService.js';
 import { ChatRosterService } from './ChatRosterService.js';
+import { ChatRoomHistoryService } from './ChatRoomHistoryService.js';
 import { LiveKitService } from './LiveKitService.js';
 import { VoiceBackendService } from './VoiceBackendService.js';
 import { VoiceRelayConsumerService } from './VoiceRelayConsumerService.js';
@@ -90,6 +97,7 @@ import { RemoteVoiceCallService } from './RemoteVoiceCallService.js';
 import { CloudflareTurnService } from './CloudflareTurnService.js';
 import { HostPolicyService } from './HostPolicyService.js';
 import { RegistryApiService } from './RegistryApiService.js';
+import { RecordingStorageService } from './RecordingStorageService.js';
 import { ReversiService } from './ReversiService.js';
 import { PageService } from './PageService.js';
 import { ActivityPubAccessControlService } from './ActivityPubAccessControlService.js';
@@ -117,6 +125,7 @@ import { AuthSessionEntityService } from './entities/AuthSessionEntityService.js
 import { BlockingEntityService } from './entities/BlockingEntityService.js';
 import { ChannelEntityService } from './entities/ChannelEntityService.js';
 import { ChatEntityService } from './entities/ChatEntityService.js';
+import { ChatRoomIconEntityService } from './entities/ChatRoomIconEntityService.js';
 import { ClipEntityService } from './entities/ClipEntityService.js';
 import { DriveFileEntityService } from './entities/DriveFileEntityService.js';
 import { DriveFolderEntityService } from './entities/DriveFolderEntityService.js';
@@ -166,6 +175,7 @@ import { RemoteLoggerService } from './RemoteLoggerService.js';
 import { RemoteUserResolveService } from './RemoteUserResolveService.js';
 import { WebfingerService } from './WebfingerService.js';
 import { ApImageService } from './activitypub/models/ApImageService.js';
+import { ApChatRoomStateService } from './activitypub/ApChatRoomStateService.js';
 import { ApMentionService } from './activitypub/models/ApMentionService.js';
 import { ApNoteService } from './activitypub/models/ApNoteService.js';
 import { ApPersonService } from './activitypub/models/ApPersonService.js';
@@ -285,6 +295,7 @@ const $AppEntityService: Provider = { provide: 'AppEntityService', useExisting: 
 const $AuthSessionEntityService: Provider = { provide: 'AuthSessionEntityService', useExisting: AuthSessionEntityService };
 const $BlockingEntityService: Provider = { provide: 'BlockingEntityService', useExisting: BlockingEntityService };
 const $ChannelEntityService: Provider = { provide: 'ChannelEntityService', useExisting: ChannelEntityService };
+const $ChatRoomIconEntityService: Provider = { provide: 'ChatRoomIconEntityService', useExisting: ChatRoomIconEntityService };
 const $ChatEntityService: Provider = { provide: 'ChatEntityService', useExisting: ChatEntityService };
 const $ClipEntityService: Provider = { provide: 'ClipEntityService', useExisting: ClipEntityService };
 const $DriveFileEntityService: Provider = { provide: 'DriveFileEntityService', useExisting: DriveFileEntityService };
@@ -334,6 +345,7 @@ const $JsonLdService: Provider = { provide: 'JsonLdService', useExisting: JsonLd
 const $RemoteLoggerService: Provider = { provide: 'RemoteLoggerService', useExisting: RemoteLoggerService };
 const $RemoteUserResolveService: Provider = { provide: 'RemoteUserResolveService', useExisting: RemoteUserResolveService };
 const $WebfingerService: Provider = { provide: 'WebfingerService', useExisting: WebfingerService };
+const $ApChatRoomStateService: Provider = { provide: 'ApChatRoomStateService', useExisting: ApChatRoomStateService };
 const $ApImageService: Provider = { provide: 'ApImageService', useExisting: ApImageService };
 const $ApMentionService: Provider = { provide: 'ApMentionService', useExisting: ApMentionService };
 const $ApNoteService: Provider = { provide: 'ApNoteService', useExisting: ApNoteService };
@@ -363,6 +375,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		TruncateAccountService,
 		DownloadService,
 		DriveService,
+		DriveDeletionService,
 		DriveFileUsageService,
 		EmailService,
 		FederatedInstanceService,
@@ -419,7 +432,13 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		ChannelFollowingService,
 		ChannelMutingService,
 		ChatService,
+		ChatRoomChannelService,
+		ChatInviteLinkService,
+		ChatRoomNotificationService,
+		ChatRoomBanService,
+		ChatDiceService,
 		ChatRosterService,
+		ChatRoomHistoryService,
 		LiveKitService,
 		VoiceBackendService,
 		VoiceRelayConsumerService,
@@ -430,6 +449,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		RemoteVoiceCallService,
 		CloudflareTurnService,
 		HostPolicyService,
+		RecordingStorageService,
 		RegistryApiService,
 		ReversiService,
 		PageService,
@@ -460,6 +480,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		BlockingEntityService,
 		ChannelEntityService,
 		ChatEntityService,
+		ChatRoomIconEntityService,
 		ClipEntityService,
 		DriveFileEntityService,
 		DriveFolderEntityService,
@@ -510,6 +531,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		RemoteUserResolveService,
 		WebfingerService,
 		ApImageService,
+		ApChatRoomStateService,
 		ApMentionService,
 		ApNoteService,
 		ApPersonService,
@@ -626,6 +648,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		$BlockingEntityService,
 		$ChannelEntityService,
 		$ChatEntityService,
+		$ChatRoomIconEntityService,
 		$ClipEntityService,
 		$DriveFileEntityService,
 		$DriveFolderEntityService,
@@ -675,6 +698,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		$RemoteUserResolveService,
 		$WebfingerService,
 		$ApImageService,
+		$ApChatRoomStateService,
 		$ApMentionService,
 		$ApNoteService,
 		$ApPersonService,
@@ -701,6 +725,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		TruncateAccountService,
 		DownloadService,
 		DriveService,
+		DriveDeletionService,
 		DriveFileUsageService,
 		EmailService,
 		FederatedInstanceService,
@@ -757,7 +782,13 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		ChannelFollowingService,
 		ChannelMutingService,
 		ChatService,
+		ChatRoomChannelService,
+		ChatInviteLinkService,
+		ChatRoomNotificationService,
+		ChatRoomBanService,
+		ChatDiceService,
 		ChatRosterService,
+		ChatRoomHistoryService,
 		LiveKitService,
 		VoiceBackendService,
 		VoiceRelayConsumerService,
@@ -768,6 +799,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		RemoteVoiceCallService,
 		CloudflareTurnService,
 		HostPolicyService,
+		RecordingStorageService,
 		RegistryApiService,
 		ReversiService,
 		PageService,
@@ -797,6 +829,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		BlockingEntityService,
 		ChannelEntityService,
 		ChatEntityService,
+		ChatRoomIconEntityService,
 		ClipEntityService,
 		DriveFileEntityService,
 		DriveFolderEntityService,
@@ -847,6 +880,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		RemoteUserResolveService,
 		WebfingerService,
 		ApImageService,
+		ApChatRoomStateService,
 		ApMentionService,
 		ApNoteService,
 		ApPersonService,
@@ -961,6 +995,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		$BlockingEntityService,
 		$ChannelEntityService,
 		$ChatEntityService,
+		$ChatRoomIconEntityService,
 		$ClipEntityService,
 		$DriveFileEntityService,
 		$DriveFolderEntityService,
@@ -1010,6 +1045,7 @@ const $ApEventService: Provider = { provide: 'ApEventService', useExisting: ApEv
 		$RemoteUserResolveService,
 		$WebfingerService,
 		$ApImageService,
+		$ApChatRoomStateService,
 		$ApMentionService,
 		$ApNoteService,
 		$ApPersonService,

@@ -4,13 +4,13 @@
 
 ```ts
 
-import type { AuthenticationResponseJSON } from '@simplewebauthn/browser';
+import type { AuthenticationResponseJSON as AuthenticationResponseJSON_2 } from '@simplewebauthn/browser';
 import { EventEmitter } from 'eventemitter3';
 import { Options } from 'reconnecting-websocket';
 import type { PublicKeyCredentialCreationOptionsJSON as PublicKeyCredentialCreationOptionsJSON_2 } from '@simplewebauthn/browser';
 import type { PublicKeyCredentialRequestOptionsJSON as PublicKeyCredentialRequestOptionsJSON_2 } from '@simplewebauthn/browser';
 import _ReconnectingWebSocket from 'reconnecting-websocket';
-import type { RegistrationResponseJSON } from '@simplewebauthn/browser';
+import type { RegistrationResponseJSON as RegistrationResponseJSON_2 } from '@simplewebauthn/browser';
 
 // Warning: (ae-forgotten-export) The symbol "components" needs to be exported by the entry point index.d.ts
 //
@@ -733,6 +733,17 @@ export type Channels = {
             newChatMessage: (payload: ChatMessage) => void;
             chatRoomVoiceState: (payload: ChatRoomVoiceState) => void;
             chatRoomListChanged: () => void;
+            chatInviteJoinResult: (payload: {
+                url: string;
+                status: 'joined' | 'invited' | 'refused';
+                roomId: string | null;
+                reason: 'revoked' | 'archived' | 'banned' | 'blocked' | 'full' | 'unknown' | null;
+            }) => void;
+            chatUnread: (payload: {
+                hasUnreadChatMessages: boolean;
+                hasUnreadChatNotifications: boolean;
+                version: number;
+            }) => void;
             readAllAnnouncements: () => void;
             myTokenRegenerated: () => void;
             signin: (payload: Signin) => void;
@@ -1007,13 +1018,27 @@ export type Channels = {
     chatRoom: {
         params: {
             roomId: string;
+            channelId?: string;
         };
         events: {
+            channelsUpdated: (payload: {
+                roomId: string;
+            }) => void;
+            channelMessage: (payload: {
+                channelId: string;
+                messageId: string;
+            }) => void;
             message: (payload: ChatMessageLite) => void;
             updated: (payload: {
                 messageId: ChatMessageLite['id'];
+                shouldNotify?: boolean;
                 text: string;
                 editedAt: string;
+                channelRefs?: {
+                    channelId: string;
+                    start: number;
+                    length: number;
+                }[];
                 emojis?: Record<string, string>;
             }) => void;
             deleted: (payload: ChatMessageLite['id']) => void;
@@ -1032,6 +1057,12 @@ export type Channels = {
                 name: string;
                 description: string;
                 isArchived: boolean;
+                allowRecording: boolean;
+                hasChannels?: boolean;
+                iconId?: string | null;
+                iconUrl?: string;
+                iconBlurhash?: string | null;
+                iconDecorations?: UserLite['avatarDecorations'];
             }) => void;
             membershipStarted: (payload: {
                 userId: string;
@@ -1040,6 +1071,9 @@ export type Channels = {
                 userId: string;
             }) => void;
             roomDeleted: () => void;
+            historyImported: (payload: {
+                status: 'running' | 'completed' | 'unavailable';
+            }) => void;
         };
         receives: {
             read: {
@@ -1197,6 +1231,24 @@ type ChatHistoryRequest = operations['chat___history']['requestBody']['content']
 type ChatHistoryResponse = operations['chat___history']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
+type ChatInviteLinkJoinRequest = operations['chat___invite-link___join']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatInviteLinkJoinResponse = operations['chat___invite-link___join']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatInviteLinkJoinStatusRequest = operations['chat___invite-link___join-status']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatInviteLinkJoinStatusResponse = operations['chat___invite-link___join-status']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatInviteLinkShowRequest = operations['chat___invite-link___show']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatInviteLinkShowResponse = operations['chat___invite-link___show']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
 type ChatMessage = components['schemas']['ChatMessage'];
 
 // @public (undocumented)
@@ -1263,10 +1315,58 @@ type ChatMessagesUserTimelineResponse = operations['chat___messages___user-timel
 type ChatRoom = components['schemas']['ChatRoom'];
 
 // @public (undocumented)
+type ChatRoomBan = components['schemas']['ChatRoomBan'];
+
+// @public (undocumented)
+type ChatRoomChannel = components['schemas']['ChatRoomChannel'];
+
+// @public (undocumented)
 type ChatRoomInvitation = components['schemas']['ChatRoomInvitation'];
 
 // @public (undocumented)
 type ChatRoomMembership = components['schemas']['ChatRoomMembership'];
+
+// @public (undocumented)
+type ChatRoomsBansDeleteRequest = operations['chat___rooms___bans___delete']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsBansListRequest = operations['chat___rooms___bans___list']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsBansListResponse = operations['chat___rooms___bans___list']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsCreateRequest = operations['chat___rooms___channels___create']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsCreateResponse = operations['chat___rooms___channels___create']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsDeleteRequest = operations['chat___rooms___channels___delete']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsListRequest = operations['chat___rooms___channels___list']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsListResponse = operations['chat___rooms___channels___list']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsReorderRequest = operations['chat___rooms___channels___reorder']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsReorderResponse = operations['chat___rooms___channels___reorder']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsUpdateRequest = operations['chat___rooms___channels___update']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsChannelsUpdateResponse = operations['chat___rooms___channels___update']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsConvertToChannelsRequest = operations['chat___rooms___convert-to-channels']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsConvertToChannelsResponse = operations['chat___rooms___convert-to-channels']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
 type ChatRoomsCreateRequest = operations['chat___rooms___create']['requestBody']['content']['application/json'];
@@ -1305,6 +1405,21 @@ type ChatRoomsInvitationsOutboxResponse = operations['chat___rooms___invitations
 type ChatRoomsInvitationsRejectRequest = operations['chat___rooms___invitations___reject']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
+type ChatRoomsInviteLinkCreateRequest = operations['chat___rooms___invite-link___create']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsInviteLinkCreateResponse = operations['chat___rooms___invite-link___create']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsInviteLinkRevokeRequest = operations['chat___rooms___invite-link___revoke']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsInviteLinkShowRequest = operations['chat___rooms___invite-link___show']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsInviteLinkShowResponse = operations['chat___rooms___invite-link___show']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
 type ChatRoomsJoiningRequest = operations['chat___rooms___joining']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
@@ -1329,16 +1444,31 @@ type ChatRoomsMembersResponse = operations['chat___rooms___members']['responses'
 type ChatRoomsMuteRequest = operations['chat___rooms___mute']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
+type ChatRoomsNotificationsRequest = operations['chat___rooms___notifications']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsNotificationsResponse = operations['chat___rooms___notifications']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
 type ChatRoomsOwnedRequest = operations['chat___rooms___owned']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
 type ChatRoomsOwnedResponse = operations['chat___rooms___owned']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
+type ChatRoomsReadRequest = operations['chat___rooms___read']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
 type ChatRoomsShowRequest = operations['chat___rooms___show']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
 type ChatRoomsShowResponse = operations['chat___rooms___show']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsUnreadRequest = operations['chat___rooms___unread']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsUnreadResponse = operations['chat___rooms___unread']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
 type ChatRoomsUpdateRequest = operations['chat___rooms___update']['requestBody']['content']['application/json'];
@@ -1353,6 +1483,12 @@ type ChatRoomsVoiceConnectionInfoRequest = operations['chat___rooms___voice___co
 type ChatRoomsVoiceConnectionInfoResponse = operations['chat___rooms___voice___connection-info']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
+type ChatRoomsVoiceConvertRecordingRequest = operations['chat___rooms___voice___convert-recording']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceConvertRecordingResponse = operations['chat___rooms___voice___convert-recording']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
 type ChatRoomsVoiceJoinRequest = operations['chat___rooms___voice___join']['requestBody']['content']['application/json'];
 
 // @public (undocumented)
@@ -1363,6 +1499,27 @@ type ChatRoomsVoiceKickRequest = operations['chat___rooms___voice___kick']['requ
 
 // @public (undocumented)
 type ChatRoomsVoiceMuteRequest = operations['chat___rooms___voice___mute']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingDiscardRequest = operations['chat___rooms___voice___recording-discard']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingFolderRequest = operations['chat___rooms___voice___recording-folder']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingFolderResponse = operations['chat___rooms___voice___recording-folder']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingPartRequest = operations['chat___rooms___voice___recording-part']['requestBody']['content']['multipart/form-data'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingPartResponse = operations['chat___rooms___voice___recording-part']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingResultRequest = operations['chat___rooms___voice___recording-result']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type ChatRoomsVoiceRecordingResultResponse = operations['chat___rooms___voice___recording-result']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
 type ChatRoomsVoiceStatesRequest = operations['chat___rooms___voice___states']['requestBody']['content']['application/json'];
@@ -1429,6 +1586,24 @@ type ClipsUpdateResponse = operations['clips___update']['responses']['200']['con
 
 // @public (undocumented)
 type DateString = string;
+
+// @public (undocumented)
+type DriveDeleteExecuteRequest = operations['drive___delete___execute']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type DriveDeleteExecuteResponse = operations['drive___delete___execute']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type DriveDeletePrepareRequest = operations['drive___delete___prepare']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type DriveDeletePrepareResponse = operations['drive___delete___prepare']['responses']['200']['content']['application/json'];
+
+// @public (undocumented)
+type DriveDeleteStatusRequest = operations['drive___delete___status']['requestBody']['content']['application/json'];
+
+// @public (undocumented)
+type DriveDeleteStatusResponse = operations['drive___delete___status']['responses']['200']['content']['application/json'];
 
 // @public (undocumented)
 type DriveFile = components['schemas']['DriveFile'];
@@ -1952,6 +2127,12 @@ declare namespace entities {
         ChartsUsersResponse,
         ChatHistoryRequest,
         ChatHistoryResponse,
+        ChatInviteLinkJoinRequest,
+        ChatInviteLinkJoinResponse,
+        ChatInviteLinkJoinStatusRequest,
+        ChatInviteLinkJoinStatusResponse,
+        ChatInviteLinkShowRequest,
+        ChatInviteLinkShowResponse,
         ChatMessagesCreateToRoomRequest,
         ChatMessagesCreateToRoomResponse,
         ChatMessagesCreateToUserRequest,
@@ -1969,6 +2150,20 @@ declare namespace entities {
         ChatMessagesUpdateResponse,
         ChatMessagesUserTimelineRequest,
         ChatMessagesUserTimelineResponse,
+        ChatRoomsBansDeleteRequest,
+        ChatRoomsBansListRequest,
+        ChatRoomsBansListResponse,
+        ChatRoomsChannelsCreateRequest,
+        ChatRoomsChannelsCreateResponse,
+        ChatRoomsChannelsDeleteRequest,
+        ChatRoomsChannelsListRequest,
+        ChatRoomsChannelsListResponse,
+        ChatRoomsChannelsReorderRequest,
+        ChatRoomsChannelsReorderResponse,
+        ChatRoomsChannelsUpdateRequest,
+        ChatRoomsChannelsUpdateResponse,
+        ChatRoomsConvertToChannelsRequest,
+        ChatRoomsConvertToChannelsResponse,
         ChatRoomsCreateRequest,
         ChatRoomsCreateResponse,
         ChatRoomsDeleteRequest,
@@ -1981,6 +2176,11 @@ declare namespace entities {
         ChatRoomsInvitationsOutboxRequest,
         ChatRoomsInvitationsOutboxResponse,
         ChatRoomsInvitationsRejectRequest,
+        ChatRoomsInviteLinkCreateRequest,
+        ChatRoomsInviteLinkCreateResponse,
+        ChatRoomsInviteLinkRevokeRequest,
+        ChatRoomsInviteLinkShowRequest,
+        ChatRoomsInviteLinkShowResponse,
         ChatRoomsJoinRequest,
         ChatRoomsJoiningRequest,
         ChatRoomsJoiningResponse,
@@ -1989,18 +2189,32 @@ declare namespace entities {
         ChatRoomsMembersRequest,
         ChatRoomsMembersResponse,
         ChatRoomsMuteRequest,
+        ChatRoomsNotificationsRequest,
+        ChatRoomsNotificationsResponse,
         ChatRoomsOwnedRequest,
         ChatRoomsOwnedResponse,
+        ChatRoomsReadRequest,
         ChatRoomsShowRequest,
         ChatRoomsShowResponse,
+        ChatRoomsUnreadRequest,
+        ChatRoomsUnreadResponse,
         ChatRoomsUpdateRequest,
         ChatRoomsUpdateResponse,
         ChatRoomsVoiceConnectionInfoRequest,
         ChatRoomsVoiceConnectionInfoResponse,
+        ChatRoomsVoiceConvertRecordingRequest,
+        ChatRoomsVoiceConvertRecordingResponse,
         ChatRoomsVoiceJoinRequest,
         ChatRoomsVoiceJoinResponse,
         ChatRoomsVoiceKickRequest,
         ChatRoomsVoiceMuteRequest,
+        ChatRoomsVoiceRecordingDiscardRequest,
+        ChatRoomsVoiceRecordingFolderRequest,
+        ChatRoomsVoiceRecordingFolderResponse,
+        ChatRoomsVoiceRecordingPartRequest,
+        ChatRoomsVoiceRecordingPartResponse,
+        ChatRoomsVoiceRecordingResultRequest,
+        ChatRoomsVoiceRecordingResultResponse,
         ChatRoomsVoiceStatesRequest,
         ChatRoomsVoiceStatesResponse,
         ChatRoomsVoiceStatusRequest,
@@ -2021,6 +2235,12 @@ declare namespace entities {
         ClipsUpdateRequest,
         ClipsUpdateResponse,
         DriveResponse,
+        DriveDeleteExecuteRequest,
+        DriveDeleteExecuteResponse,
+        DriveDeletePrepareRequest,
+        DriveDeletePrepareResponse,
+        DriveDeleteStatusRequest,
+        DriveDeleteStatusResponse,
         DriveFilesRequest,
         DriveFilesResponse,
         DriveFilesAttachedChatMessagesRequest,
@@ -2515,8 +2735,10 @@ declare namespace entities {
         ChatMessageLiteFor1on1,
         ChatMessageLiteForRoom,
         ChatRoom,
+        ChatRoomChannel,
         ChatRoomInvitation,
         ChatRoomMembership,
+        ChatRoomBan,
         ChatRoomVoiceState,
         NoteHistory
     }
@@ -2815,7 +3037,7 @@ type I2faKeyDoneRequest_2 = {
     password: string;
     token?: string | null;
     name: string;
-    credential: RegistrationResponseJSON;
+    credential: RegistrationResponseJSON_2;
 };
 
 // @public (undocumented)
@@ -3726,7 +3948,7 @@ type SigninFlowRequest = {
     username: string;
     password?: string;
     token?: string;
-    credential?: AuthenticationResponseJSON;
+    credential?: AuthenticationResponseJSON_2;
     'hcaptcha-response'?: string | null;
     'g-recaptcha-response'?: string | null;
     'turnstile-response'?: string | null;
@@ -3756,7 +3978,7 @@ type SigninWithPasskeyInitResponse = {
 
 // @public (undocumented)
 type SigninWithPasskeyRequest = {
-    credential?: AuthenticationResponseJSON;
+    credential?: AuthenticationResponseJSON_2;
     context?: string;
 };
 
@@ -4153,8 +4375,8 @@ type VerifyEmailRequest = operations['verify-email']['requestBody']['content']['
 // Warnings were encountered during analysis:
 //
 // src/streaming.ts:62:3 - (ae-forgotten-export) The symbol "ReconnectingWebSocket" needs to be exported by the entry point index.d.ts
-// src/streaming.types.ts:257:4 - (ae-forgotten-export) The symbol "ReversiUpdateKey" needs to be exported by the entry point index.d.ts
-// src/streaming.types.ts:272:4 - (ae-forgotten-export) The symbol "ReversiUpdateSettings" needs to be exported by the entry point index.d.ts
+// src/streaming.types.ts:264:4 - (ae-forgotten-export) The symbol "ReversiUpdateKey" needs to be exported by the entry point index.d.ts
+// src/streaming.types.ts:279:4 - (ae-forgotten-export) The symbol "ReversiUpdateSettings" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

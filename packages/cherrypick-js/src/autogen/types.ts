@@ -1495,6 +1495,33 @@ export type paths = {
          */
         post: operations['chat___history'];
     };
+    '/chat/invite-link/join': {
+        /**
+         * chat/invite-link/join
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___invite-link___join'];
+    };
+    '/chat/invite-link/join-status': {
+        /**
+         * chat/invite-link/join-status
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:chat*
+         */
+        post: operations['chat___invite-link___join-status'];
+    };
+    '/chat/invite-link/show': {
+        /**
+         * chat/invite-link/show
+         * @description No description provided.
+         *
+         *     **Credential required**: *No*
+         */
+        post: operations['chat___invite-link___show'];
+    };
     '/chat/messages/create-to-room': {
         /**
          * chat/messages/create-to-room
@@ -1594,6 +1621,78 @@ export type paths = {
          */
         post: operations['chat___read-all'];
     };
+    '/chat/rooms/bans/delete': {
+        /**
+         * chat/rooms/bans/delete
+         * @description Pardons an account the owner removed from the room. It can then be invited or join again, but it does not become a member, and nobody is invited or told.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___bans___delete'];
+    };
+    '/chat/rooms/bans/list': {
+        /**
+         * chat/rooms/bans/list
+         * @description The accounts the owner removed from the room, which cannot join it again until pardoned. Only the owner can see them.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:chat*
+         */
+        post: operations['chat___rooms___bans___list'];
+    };
+    '/chat/rooms/channels/create': {
+        /**
+         * chat/rooms/channels/create
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___channels___create'];
+    };
+    '/chat/rooms/channels/delete': {
+        /**
+         * chat/rooms/channels/delete
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___channels___delete'];
+    };
+    '/chat/rooms/channels/list': {
+        /**
+         * chat/rooms/channels/list
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:chat*
+         */
+        post: operations['chat___rooms___channels___list'];
+    };
+    '/chat/rooms/channels/reorder': {
+        /**
+         * chat/rooms/channels/reorder
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___channels___reorder'];
+    };
+    '/chat/rooms/channels/update': {
+        /**
+         * chat/rooms/channels/update
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___channels___update'];
+    };
+    '/chat/rooms/convert-to-channels': {
+        /**
+         * chat/rooms/convert-to-channels
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___convert-to-channels'];
+    };
     '/chat/rooms/create': {
         /**
          * chat/rooms/create
@@ -1666,6 +1765,33 @@ export type paths = {
          */
         post: operations['chat___rooms___invitations___reject'];
     };
+    '/chat/rooms/invite-link/create': {
+        /**
+         * chat/rooms/invite-link/create
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___invite-link___create'];
+    };
+    '/chat/rooms/invite-link/revoke': {
+        /**
+         * chat/rooms/invite-link/revoke
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___invite-link___revoke'];
+    };
+    '/chat/rooms/invite-link/show': {
+        /**
+         * chat/rooms/invite-link/show
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:chat*
+         */
+        post: operations['chat___rooms___invite-link___show'];
+    };
     '/chat/rooms/join': {
         /**
          * chat/rooms/join
@@ -1687,7 +1813,7 @@ export type paths = {
     '/chat/rooms/kick': {
         /**
          * chat/rooms/kick
-         * @description No description provided.
+         * @description Removes a member from a room you own. The account cannot join the room again until you pardon it with chat/rooms/bans/delete.
          *
          *     **Credential required**: *Yes* / **Permission**: *write:chat*
          */
@@ -1720,6 +1846,15 @@ export type paths = {
          */
         post: operations['chat___rooms___mute'];
     };
+    '/chat/rooms/notifications': {
+        /**
+         * chat/rooms/notifications
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___notifications'];
+    };
     '/chat/rooms/owned': {
         /**
          * chat/rooms/owned
@@ -1729,6 +1864,15 @@ export type paths = {
          */
         post: operations['chat___rooms___owned'];
     };
+    '/chat/rooms/read': {
+        /**
+         * chat/rooms/read
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:chat*
+         */
+        post: operations['chat___rooms___read'];
+    };
     '/chat/rooms/show': {
         /**
          * chat/rooms/show
@@ -1737,6 +1881,15 @@ export type paths = {
          *     **Credential required**: *Yes* / **Permission**: *read:chat*
          */
         post: operations['chat___rooms___show'];
+    };
+    '/chat/rooms/unread': {
+        /**
+         * chat/rooms/unread
+         * @description No description provided.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:chat*
+         */
+        post: operations['chat___rooms___unread'];
     };
     '/chat/rooms/update': {
         /**
@@ -1755,6 +1908,15 @@ export type paths = {
          *     **Credential required**: *Yes* / **Permission**: *write:chat*
          */
         post: operations['chat___rooms___voice___connection-info'];
+    };
+    '/chat/rooms/voice/convert-recording': {
+        /**
+         * chat/rooms/voice/convert-recording
+         * @description Convert recording parts into a single file without deleting the originals until it succeeds. Each id is either an uploaded drive file or a part kept in the temporary recording storage, in recording order. A null response means that no conversion was performed and the originals remain. A download response means the file exceeds the drive file size limit and is kept for a one-time download instead. Repeating the same requestId returns the earlier result, so a lost response can be recovered.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['chat___rooms___voice___convert-recording'];
     };
     '/chat/rooms/voice/join': {
         /**
@@ -1782,6 +1944,42 @@ export type paths = {
          *     **Credential required**: *Yes* / **Permission**: *write:chat*
          */
         post: operations['chat___rooms___voice___mute'];
+    };
+    '/chat/rooms/voice/recording-discard': {
+        /**
+         * chat/rooms/voice/recording-discard
+         * @description Discard a temporarily kept recording download and temporary recording parts owned by the caller. Already gone is treated as success.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['chat___rooms___voice___recording-discard'];
+    };
+    '/chat/rooms/voice/recording-folder': {
+        /**
+         * chat/rooms/voice/recording-folder
+         * @description Return the account's single remembered call-recording folder, creating it on first use. Serialized per user so concurrent first recordings do not create duplicates.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['chat___rooms___voice___recording-folder'];
+    };
+    '/chat/rooms/voice/recording-part': {
+        /**
+         * chat/rooms/voice/recording-part
+         * @description Upload a recording part into the temporary recording storage, for parts that could not be stored in the drive. The caller must be a member of the given room. The conversion step concatenates these parts with the uploaded ones into a single final file.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['chat___rooms___voice___recording-part'];
+    };
+    '/chat/rooms/voice/recording-result': {
+        /**
+         * chat/rooms/voice/recording-result
+         * @description Look up the result of an earlier recording conversion by requestId without converting again. Returns null when nothing is remembered.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *read:drive*
+         */
+        post: operations['chat___rooms___voice___recording-result'];
     };
     '/chat/rooms/voice/states': {
         /**
@@ -1908,6 +2106,33 @@ export type paths = {
          *     **Credential required**: *Yes* / **Permission**: *read:drive*
          */
         post: operations['drive'];
+    };
+    '/drive/delete/execute': {
+        /**
+         * drive/delete/execute
+         * @description Execute one batch of a confirmed drive deletion. Deletes only frozen file IDs, even if moved, and empty unchanged folders from children to parents. New files are never added to the operation. Call until done. Repeated calls preserve cumulative outcomes; prepare and confirm again to retry failures. Counts describe drive database removal; object-storage cleanup uses the usual deletion queue.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['drive___delete___execute'];
+    };
+    '/drive/delete/prepare': {
+        /**
+         * drive/delete/prepare
+         * @description Prepare a deletion of your selected files (including in-use files) or an entire folder tree. Freezes file IDs for confirmation for one hour, replacing your previous confirmation. At most 10000 files and 1000 folders. Does not delete anything.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['drive___delete___prepare'];
+    };
+    '/drive/delete/status': {
+        /**
+         * drive/delete/status
+         * @description Read your deletion outcomes after a lost execute response without deleting another batch. The owner-bound operation expires one hour after preparation or its latest execution update; status requests do not extend it.
+         *
+         *     **Credential required**: *Yes* / **Permission**: *write:drive*
+         */
+        post: operations['drive___delete___status'];
     };
     '/drive/files': {
         /**
@@ -4629,6 +4854,7 @@ export type components = {
             hasUnreadAntenna: boolean;
             hasUnreadChannel: boolean;
             hasUnreadChatMessages: boolean;
+            hasUnreadChatNotifications?: boolean;
             hasUnreadNotification: boolean;
             hasPendingReceivedFollowRequest: boolean;
             unreadNotificationsCount: number;
@@ -6210,18 +6436,43 @@ export type components = {
             editedAt?: string | null;
             /** Format: date-time */
             deletedAt?: string | null;
-            fromUserId: string;
-            fromUser: components['schemas']['UserLite'];
+            fromUserId: string | null;
+            fromUser: components['schemas']['UserLite'] | null;
             toUserId?: string | null;
             toUser?: components['schemas']['UserLite'] | null;
             toRoomId?: string | null;
             toRoom?: components['schemas']['ChatRoom'] | null;
+            toRoomChannelId?: string | null;
+            toRoomChannel?: {
+                id: string;
+                name: string;
+            } | null;
+            channelRefs?: {
+                channelId: string;
+                start: number;
+                length: number;
+            }[];
+            dice?: {
+                version: number;
+                /** @enum {string} */
+                engine: '@dice-roller/rpg-dice-roller';
+                engineVersion: string;
+                notation: string;
+                total: number;
+                output: string;
+            } | null;
             text?: string | null;
             fileId?: string | null;
             file?: components['schemas']['DriveFile'] | null;
             fileIds: string[];
             files: components['schemas']['DriveFile'][];
             isRead?: boolean;
+            archivedAuthor?: {
+                name: string | null;
+                username: string | null;
+                host: string | null;
+            } | null;
+            unavailableFileCount?: number;
             reactions: {
                 reaction: string;
                 user: components['schemas']['UserLite'];
@@ -6238,15 +6489,40 @@ export type components = {
             editedAt?: string | null;
             /** Format: date-time */
             deletedAt?: string | null;
-            fromUserId: string;
-            fromUser?: components['schemas']['UserLite'];
+            fromUserId: string | null;
+            fromUser?: components['schemas']['UserLite'] | null;
             toUserId?: string | null;
             toRoomId?: string | null;
+            toRoomChannelId?: string | null;
+            toRoomChannel?: {
+                id: string;
+                name: string;
+            } | null;
+            channelRefs?: {
+                channelId: string;
+                start: number;
+                length: number;
+            }[];
+            dice?: {
+                version: number;
+                /** @enum {string} */
+                engine: '@dice-roller/rpg-dice-roller';
+                engineVersion: string;
+                notation: string;
+                total: number;
+                output: string;
+            } | null;
             text?: string | null;
             fileId?: string | null;
             file?: components['schemas']['DriveFile'] | null;
             fileIds: string[];
             files: components['schemas']['DriveFile'][];
+            archivedAuthor?: {
+                name: string | null;
+                username: string | null;
+                host: string | null;
+            } | null;
+            unavailableFileCount?: number;
             reactions: {
                 reaction: string;
                 user?: components['schemas']['UserLite'] | null;
@@ -6265,6 +6541,15 @@ export type components = {
             deletedAt?: string | null;
             fromUserId: string;
             toUserId: string;
+            dice?: {
+                version: number;
+                /** @enum {string} */
+                engine: '@dice-roller/rpg-dice-roller';
+                engineVersion: string;
+                notation: string;
+                total: number;
+                output: string;
+            } | null;
             text?: string | null;
             fileId?: string | null;
             file?: components['schemas']['DriveFile'] | null;
@@ -6278,6 +6563,7 @@ export type components = {
             };
         };
         ChatMessageLiteForRoom: {
+            shouldNotify?: boolean;
             id: string;
             /** Format: date-time */
             createdAt: string;
@@ -6285,14 +6571,39 @@ export type components = {
             editedAt?: string | null;
             /** Format: date-time */
             deletedAt?: string | null;
-            fromUserId: string;
-            fromUser: components['schemas']['UserLite'];
+            fromUserId: string | null;
+            fromUser: components['schemas']['UserLite'] | null;
             toRoomId: string;
+            toRoomChannelId?: string | null;
+            toRoomChannel?: {
+                id: string;
+                name: string;
+            } | null;
+            channelRefs?: {
+                channelId: string;
+                start: number;
+                length: number;
+            }[];
+            dice?: {
+                version: number;
+                /** @enum {string} */
+                engine: '@dice-roller/rpg-dice-roller';
+                engineVersion: string;
+                notation: string;
+                total: number;
+                output: string;
+            } | null;
             text?: string | null;
             fileId?: string | null;
             file?: components['schemas']['DriveFile'] | null;
             fileIds: string[];
             files: components['schemas']['DriveFile'][];
+            archivedAuthor?: {
+                name: string | null;
+                username: string | null;
+                host: string | null;
+            } | null;
+            unavailableFileCount?: number;
             reactions: {
                 reaction: string;
                 user: components['schemas']['UserLite'];
@@ -6302,6 +6613,21 @@ export type components = {
             };
         };
         ChatRoom: {
+            iconId?: string | null;
+            iconUrl?: string;
+            iconBlurhash?: string | null;
+            iconDecorations?: {
+                /** Format: id */
+                id: string;
+                angle?: number;
+                flipH?: boolean;
+                offsetX?: number;
+                offsetY?: number;
+                scale?: number;
+                opacity?: number;
+                /** Format: url */
+                url: string;
+            }[];
             id: string;
             /** Format: date-time */
             createdAt: string;
@@ -6311,7 +6637,20 @@ export type components = {
             description: string;
             isMuted?: boolean;
             invitationExists?: boolean;
+            /** @enum {string} */
+            notificationLevel?: 'all' | 'mentions' | 'none';
+            hasChannels?: boolean;
+            legacyChannelId?: string | null;
+            /** @enum {string|null} */
+            historyImportStatus?: 'running' | 'completed' | 'unavailable' | null;
             isArchived: boolean;
+            allowRecording: boolean;
+        };
+        ChatRoomChannel: {
+            id: string;
+            roomId: string;
+            name: string;
+            isLegacy: boolean;
         };
         ChatRoomInvitation: {
             id: string;
@@ -6331,6 +6670,14 @@ export type components = {
             roomId: string;
             room?: components['schemas']['ChatRoom'];
         };
+        ChatRoomBan: {
+            id: string;
+            /** Format: date-time */
+            createdAt: string;
+            roomId: string;
+            userId: string;
+            user: components['schemas']['UserLite'];
+        };
         ChatRoomVoiceState: {
             unavailable?: boolean;
             /** Format: id */
@@ -6340,6 +6687,7 @@ export type components = {
                 user: components['schemas']['UserLite'];
                 micMuted?: boolean;
                 deafened?: boolean;
+                recording?: boolean;
                 screenSharing: boolean;
             }[];
             updatedAt: number;
@@ -10961,6 +11309,7 @@ export interface operations {
                         allowExternalApRedirect: boolean;
                         enableRemoteVoiceCall: boolean;
                         voiceCallMaxParticipants: number;
+                        voiceCallMaxRecordingConversions: number;
                         /** @enum {string} */
                         voiceCallLivekitSource: 'yaml' | 'custom' | 'disabled';
                         voiceCallLivekitUrl: string | null;
@@ -14540,6 +14889,7 @@ export interface operations {
                     allowExternalApRedirect?: boolean;
                     enableRemoteVoiceCall?: boolean;
                     voiceCallMaxParticipants?: number;
+                    voiceCallMaxRecordingConversions?: number;
                     /** @enum {string} */
                     voiceCallLivekitSource?: 'yaml' | 'custom' | 'disabled';
                     voiceCallLivekitUrl?: string | null;
@@ -15913,6 +16263,8 @@ export interface operations {
                         id: string;
                         app: components['schemas']['App'];
                         token: string;
+                        /** @description CherryPick permissions for the pending Mastodon OAuth request. */
+                        permission?: string[];
                     };
                 };
             };
@@ -18559,14 +18911,279 @@ export interface operations {
             };
         };
     };
+    'chat___invite-link___join': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    url: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        /** @enum {string} */
+                        status: 'joined' | 'pending';
+                        /** Format: misskey:id */
+                        roomId: string | null;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___invite-link___join-status': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    url: string;
+                    /** @default false */
+                    withMembersCount?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        /** @enum {string} */
+                        status: 'none' | 'pending' | 'joined' | 'invited' | 'refused';
+                        /** Format: misskey:id */
+                        roomId: string | null;
+                        /** @enum {string|null} */
+                        reason: 'revoked' | 'archived' | 'banned' | 'blocked' | 'full' | 'unknown' | null;
+                        membersCount: number | null;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___invite-link___show': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    code: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        name: string;
+                        description: string;
+                        membersCount: number;
+                        iconUrl: string;
+                        iconBlurhash: string | null;
+                        iconDecorations: {
+                            /** Format: id */
+                            id: string;
+                            angle?: number;
+                            flipH?: boolean;
+                            offsetX?: number;
+                            offsetY?: number;
+                            scale?: number;
+                            opacity?: number;
+                            /** Format: url */
+                            url: string;
+                        }[];
+                        /** Format: misskey:id */
+                        joinedRoomId: string | null;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
     'chat___messages___create-to-room': {
         requestBody: {
             content: {
                 'application/json': {
+                    channelRefs?: {
+                        /** Format: misskey:id */
+                        channelId: string;
+                        start: number;
+                        length: number;
+                    }[];
                     text?: string | null;
                     /** Format: misskey:id */
                     fileId?: string;
                     fileIds?: string[];
+                    /** Format: misskey:id */
+                    toRoomChannelId?: string;
                     /** Format: misskey:id */
                     toRoomId: string;
                 };
@@ -18875,6 +19492,8 @@ export interface operations {
                     sinceDate?: number;
                     untilDate?: number;
                     /** Format: misskey:id */
+                    channelId?: string;
+                    /** Format: misskey:id */
                     roomId: string;
                     /**
                      * @description Whether to include a marker with `deletedAt` set for each deleted message, in the place of that message.
@@ -18950,6 +19569,8 @@ export interface operations {
                     limit?: number;
                     /** Format: misskey:id */
                     userId?: string | null;
+                    /** Format: misskey:id */
+                    channelId?: string;
                     /** Format: misskey:id */
                     roomId?: string | null;
                 };
@@ -19166,6 +19787,12 @@ export interface operations {
                 'application/json': {
                     /** Format: misskey:id */
                     messageId: string;
+                    channelRefs?: {
+                        /** Format: misskey:id */
+                        channelId: string;
+                        start: number;
+                        length: number;
+                    }[];
                     text: string;
                 };
             };
@@ -19321,6 +19948,593 @@ export interface operations {
             204: {
                 headers: {
                     [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___bans___delete: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    /** Format: misskey:id */
+                    userId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___bans___list: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    /** @default 30 */
+                    limit?: number;
+                    /** Format: misskey:id */
+                    sinceId?: string;
+                    /** Format: misskey:id */
+                    untilId?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoomBan'][];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___channels___create: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoomChannel'];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___channels___delete: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    channelId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___channels___list: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoomChannel'][];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___channels___reorder: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    channelIds: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoomChannel'][];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___channels___update: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    channelId: string;
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoomChannel'];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___convert-to-channels': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['ChatRoom'];
                 };
             };
             /** @description Client error */
@@ -19965,6 +21179,246 @@ export interface operations {
             };
         };
     };
+    'chat___rooms___invite-link___create': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        /** Format: url */
+                        url: string;
+                        code: string;
+                        /** Format: date-time */
+                        createdAt: string;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___invite-link___revoke': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___invite-link___show': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        /** Format: url */
+                        url: string;
+                        code: string;
+                        /** Format: date-time */
+                        createdAt: string;
+                    } | null;
+                };
+            };
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
     chat___rooms___join: {
         requestBody: {
             content: {
@@ -20402,6 +21856,97 @@ export interface operations {
             };
         };
     };
+    chat___rooms___notifications: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    /** Format: misskey:id */
+                    channelId?: string;
+                    /** @enum {string} */
+                    level?: 'all' | 'mentions' | 'none' | 'inherit';
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        roomId: string;
+                        channelId: string | null;
+                        /** @enum {string} */
+                        level: 'all' | 'mentions' | 'none' | 'inherit';
+                        /** @enum {string} */
+                        effectiveLevel: 'all' | 'mentions' | 'none';
+                        channelOverrides: {
+                            channelId: string;
+                            /** @enum {string} */
+                            level: 'all' | 'mentions' | 'none';
+                        }[];
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
     chat___rooms___owned: {
         requestBody: {
             content: {
@@ -20456,6 +22001,84 @@ export interface operations {
             };
             /** @description I'm Ai */
             418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    chat___rooms___read: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    /** Format: misskey:id */
+                    channelId?: string;
+                    /** Format: misskey:id */
+                    untilId?: string;
+                    /** @default false */
+                    readAll?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -20540,6 +22163,86 @@ export interface operations {
             };
         };
     };
+    chat___rooms___unread: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        hasUnread: boolean;
+                        hasUnreadNotification: boolean;
+                        unreadChannelIds: string[];
+                        notificationChannelIds: string[];
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
     chat___rooms___update: {
         requestBody: {
             content: {
@@ -20549,6 +22252,19 @@ export interface operations {
                     name?: string;
                     description?: string;
                     isArchived?: boolean;
+                    allowRecording?: boolean;
+                    /** Format: misskey:id */
+                    iconId?: string | null;
+                    iconDecorations?: {
+                        /** Format: misskey:id */
+                        id: string;
+                        angle?: number | null;
+                        flipH?: boolean | null;
+                        offsetX?: number | null;
+                        offsetY?: number | null;
+                        scale?: number | null;
+                        opacity?: number | null;
+                    }[];
                 };
             };
         };
@@ -20637,6 +22353,102 @@ export interface operations {
                     'application/json': {
                         mediaProvider?: string;
                     };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___voice___convert-recording': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    fileIds: string[];
+                    requestId: string;
+                    video?: boolean;
+                    /**
+                     * Format: misskey:id
+                     * @default null
+                     */
+                    folderId?: string | null;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        file: components['schemas']['DriveFile'] | null;
+                        download: {
+                            id: string;
+                            name: string;
+                            size: number;
+                            /** @enum {string} */
+                            reason: 'tooLarge' | 'noFreeSpace';
+                        } | null;
+                    } | null;
+                };
+            };
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
                 };
             };
             /** @description Client error */
@@ -20933,6 +22745,326 @@ export interface operations {
             };
         };
     };
+    'chat___rooms___voice___recording-discard': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    /** @default null */
+                    id?: string | null;
+                    /** @default [] */
+                    partIds?: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___voice___recording-folder': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['DriveFolder'];
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___voice___recording-part': {
+        requestBody: {
+            content: {
+                'multipart/form-data': {
+                    /** Format: misskey:id */
+                    roomId: string;
+                    /**
+                     * Format: binary
+                     * @description The file contents.
+                     */
+                    file: Blob;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        id: string;
+                        size: number;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    'chat___rooms___voice___recording-result': {
+        requestBody: {
+            content: {
+                'application/json': {
+                    requestId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        file: components['schemas']['DriveFile'] | null;
+                        download: {
+                            id: string;
+                            name: string;
+                            size: number;
+                            /** @enum {string} */
+                            reason: 'tooLarge' | 'noFreeSpace';
+                        } | null;
+                    } | null;
+                };
+            };
+            /** @description OK (without any results) */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
     chat___rooms___voice___states: {
         requestBody: {
             content: {
@@ -21007,6 +23139,7 @@ export interface operations {
                     sessionId: string;
                     micMuted: boolean;
                     deafened: boolean;
+                    recording?: boolean;
                 };
             };
         };
@@ -21820,6 +23953,251 @@ export interface operations {
                     'application/json': {
                         capacity: number;
                         usage: number;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    drive___delete___execute: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    operationId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        operationId: string;
+                        totalCount: number;
+                        deletedCount: number;
+                        missingCount: number;
+                        failedCount: number;
+                        remainingCount: number;
+                        remainingFoldersCount: number;
+                        done: boolean;
+                        folderDeleted: boolean;
+                        /** @description IDs sorted in lexicographic order. */
+                        deletedIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        missingIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        deletedFolderIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        missingFolderIds: string[];
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    drive___delete___prepare: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    fileIds?: string[];
+                    /** Format: misskey:id */
+                    folderId?: string;
+                } & (unknown | unknown);
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        operationId: string;
+                        totalCount: number;
+                    };
+                };
+            };
+            /** @description Client error */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Authentication error */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Forbidden error */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description I'm Ai */
+            418: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Error'];
+                };
+            };
+        };
+    };
+    drive___delete___status: {
+        requestBody: {
+            content: {
+                'application/json': {
+                    operationId: string;
+                };
+            };
+        };
+        responses: {
+            /** @description OK (with results) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        operationId: string;
+                        totalCount: number;
+                        deletedCount: number;
+                        missingCount: number;
+                        failedCount: number;
+                        remainingCount: number;
+                        remainingFoldersCount: number;
+                        done: boolean;
+                        folderDeleted: boolean;
+                        /** @description IDs sorted in lexicographic order. */
+                        deletedIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        missingIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        deletedFolderIds: string[];
+                        /** @description IDs sorted in lexicographic order. */
+                        missingFolderIds: string[];
                     };
                 };
             };
@@ -27502,7 +29880,6 @@ export interface operations {
                 };
                 content: {
                     'application/json': {
-                        qr: string;
                         url: string;
                         secret: string;
                         label: string;
